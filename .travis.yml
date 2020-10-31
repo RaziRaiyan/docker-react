@@ -6,4 +6,4 @@ before_install:
   - docker build -t raiyanrazi/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run raiyanrazi/docker-react npm run test -- --coverage
+  - docker run raiyanrazi/docker-react npm run coverage
