@@ -1,8 +1,22 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
 import App from './App';
+import './setupTests';
+import {shallow} from 'enzyme';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+export const findByTestAttribute = (wrapper, attribute) => {
+    const component =  wrapper.find(`[data-test='${attribute}']`);
+    return component;
+}
+
+describe('Renders', () => {
+    let wrapper;
+    beforeEach(() => {
+        wrapper = shallow(<App />);
+    })
+
+    it('Should render app component', () => {
+        const button = findByTestAttribute(wrapper, 'AppComponent');
+        expect(button.length).toBe(1);
+    });
 });
