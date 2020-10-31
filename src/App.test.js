@@ -1,22 +1,9 @@
 import React from 'react';
 import App from './App';
-import './setupTests';
-import {shallow} from 'enzyme';
+import {render, fireEvent} from "@testing-library/react";
 
-
-export const findByTestAttribute = (wrapper, attribute) => {
-    const component =  wrapper.find(`[data-test='${attribute}']`);
-    return component;
-}
-
-describe('Renders', () => {
-    let wrapper;
-    beforeEach(() => {
-        wrapper = shallow(<App />);
-    })
-
-    it('Should render app component', () => {
-        const button = findByTestAttribute(wrapper, 'AppComponent');
-        expect(button.length).toBe(1);
-    });
-});
+it("Renders correctly", () => {
+    const {queryByTestId, queryByPlaceholderText} = render(<App/>);
+    // console.log(render(<App/>).debug());
+    expect(queryByTestId("AppComponent")).toBeTruthy();
+})
