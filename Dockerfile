@@ -1,6 +1,6 @@
-FROM node:alpine as builder
-WORKDIR '/app'
-COPY package*.json ./
+FROM node:alpine
+WORKDIR '/build'
+COPY package.json ./
 RUN npm config set registry http://registry.npmjs.org/
 RUN npm install
 COPY . .
