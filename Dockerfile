@@ -8,7 +8,7 @@ RUN npm run build
 
 FROM nginx
 EXPOSE 80
-COPY --from=0 /app/build /usr/share/nginx/html
+COPY --from=0 /build/build /usr/share/nginx/html
 
 #FROM node:alpine
 #WORKDIR '/app'
